@@ -8,8 +8,9 @@ class Handler implements URLHandler {
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
-            return String.format("Amazing slayful dancer Renato Number: %d", sentences);
-        } else {
+            return String.format("test lol %d", sentences);
+        } 
+        else {
             System.out.println("Path: " + url.getPath());
             //adds the word or sentence to list of sentence
             if (url.getPath().contains("/add-message")) {
@@ -18,8 +19,9 @@ class Handler implements URLHandler {
                     sentences = sentences + "\n" + parameters[1];
             }
             return "404 Not Found!";
+            }
         }
-    }
+        return sentences;
     }
 }
 
