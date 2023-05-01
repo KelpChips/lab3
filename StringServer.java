@@ -4,7 +4,7 @@ import java.net.URI;
 class Handler implements URLHandler {
     // The one bit of state on the server: a number that will be manipulated by
     // various requests.
-    String sentences;
+    String sentences = "";
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
@@ -14,10 +14,12 @@ class Handler implements URLHandler {
             //adds the word or sentence to list of sentence
             if (url.getPath().contains("/add-message")) {
                 String[] parameters = url.getQuery().split("=");
-                sentences += parameters[1];
+                if (parameters[0].equals("s")) {
+                    sentences = sentences + "\n" + parameters[1];
             }
             return "404 Not Found!";
         }
+    }
     }
 }
 
